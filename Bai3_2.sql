@@ -8,6 +8,7 @@ create table Customer(
     customerName varchar(10)
 );
 
+-- Quan hệ Nhiều-Nhiều (Many-to-Many / n-n)
 create table Orders(
     orderID int primary key auto_increment,
     customerID int,
@@ -30,3 +31,13 @@ create table OrderDetails(
     foreign key(orderID) references Orders(orderID),
     foreign key(productID) references Products(productID)
 );
+
+-- Quan hệ Một-Một (One-to-One / 1-1)
+-- Bảng ProductDetails (lưu trữ thông tin tùy chọn/lớn/nhạy cảm)
+create table ProductDetails(
+    productID int primary key, -- La PK va FK
+    largeImage BLOB,
+    fullDescription text,
+    comment text,
+    foreign key(productID) references Products(productID)
+)
